@@ -1,10 +1,8 @@
 #pragma once
-
 #include <string>
 #include <vector>
 
-// Aquí irán funciones de utilidad, como por ejemplo,
-// una función para listar procesos del sistema.
-namespace utils {
-
-} 
+// Funciones de utilidad del sistema
+std::string GetLastErrorAsString();
+bool FileExists(const std::string& filepath);
+std::vector<std::string> SplitString(const std::string& str, char delimiter); 

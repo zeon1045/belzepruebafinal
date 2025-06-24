@@ -1,17 +1,17 @@
 #pragma once
 #include <windows.h>
 #include <string>
-#include "../../kernel_mode/common.h" // Usamos la ruta relativa
+#include "common.h" // Incluye la ruta corregida por CMake
 
 class DriverCommunicator {
 private:
-    HANDLE hDriver = INVALID_HANDLE_VALUE;
+    HANDLE hDriver;
 
 public:
-    DriverCommunicator(const std::wstring& driverSymLink);
+    DriverCommunicator(const std::wstring& driverSymLink = L"\\\\.\\Belzebub");
     ~DriverCommunicator();
 
     bool IsLoaded() const;
-    bool ReadMemory(HANDLE pid, uintptr_t address, PVOID buffer, size_t size);
-    bool WriteMemory(HANDLE pid, uintptr_t address, PVOID buffer, size_t size);
-}; 
+    bool ReadMemory(DWORD pid, uintptr_t address, PVOID buffer, size_t size);
+    bool WriteMemory(DWORD pid, uintptr_t address, PVOID buffer, size_t size);
+};
